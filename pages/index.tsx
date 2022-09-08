@@ -13,15 +13,89 @@ import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment } from '../slices/testSlice'
 
 interface dataItem {
-  thisKeyDoesNotExistOnThisObject: string;
+  actual_apartment_photos__c: boolean;
+  adr__c: number;
+  airbnb_available_date_override__c: string;
+  airbnb_directions__c: string;
+  airbnb_getting_around__c: string;
+  airbnb_neighborhood_overview__c: string;
+  airbnb_rate__c: number;
+  airbnb_the_space__c: string;
+  amenities__c: string;
+  apartment_orientation__c: string;
+  apartment_photos__c: string;
+  apartment_virtual_tour__c: string;
+  api_listing_description__c: string;
+  api_listing_title__c: string;
+  apt_marketing_description__c: string;
+  apt_num__c: string;
+  apt_size__c: string;
+  available_date__c: string;
+  available_date_override__c: boolean;
+  baths__c: number;
+  bed_class__c: string;
+  bed_size__c: string;
+  building_link__c: string;
+  building_market__c: string;
+  building_type__c: string;
   buildingaddress__c: string;
-  productcode: string;
+  cable_provider_2__c: string;
   city__c: string;
-  state__c: sting;
+  country__c: string;
+  createddate: string;
+  description: string;
+  do_not_list_on__c: string;
+  force_list_on__c: string;
+  full_address__c: string;
+  general_notes__c: string;
+  heroku_external_id__c: string;
+  id: number;
+  internal_notes__c: string;
+  isactive: boolean;
+  isdeleted: boolean;
+  lastmodifieddate: string;
+  livingroom_tv_size__c: string;
+  long_term_public_rate__c: number;
+  long_term_rate__c: string;
+  main_bedroom_bed_size__c: string;
+  name: string;
+  neighborhood__c: string;
+  notice_status__c: string;
+  num_vacant_days__c: string;
+  number_of_rooms__c: number;
+  occupied__c: boolean;
+  oscar_unit_code__c: string;
+  override_reason__c: string;
+  pending_comments__c: string;
+  pending_expiration__c: string;
+  placed_by__c: string;
+  productcode: string;
+  profit_center__c: string;
+  recordtypeid: string;
+  second_bedroom_bed_size__c: string;
+  sfid: string;
+  short_term_public_rate__c: number;
+  short_term_rate__c: string;
+  sites_listed_on__c: string;
+  square_feet__c: number;
+  state__c: string;
+  strikethrough_price__c: number;
+  systemmodstamp: string;
+  third_bedroom_bed_size__c: string;
+  views__c: string;
+  virtual_tour__c: string;
+  vrbo_account_info__c: string;
+  wifi_package__c: string;
+  x1st_bedroom_tv_size__c: string;
+  x2nd_bedroom_tv_size__c: string;
+  x3rd_bedroom_tv_size__c: string;
+  _hc_err: null;
+  _hc_lastop: string;
 }
 
 export default function Home( props: any ) {
   const resJson : dataItem[] = props.resJson;
+  console.log("Hello World! resJson:", resJson)
   
   const count = useSelector((state: RootState) => state.test.value)
   const dispatch = useDispatch()
@@ -78,9 +152,22 @@ export default function Home( props: any ) {
 
 export async function getStaticProps() {
   const resJson = await getRestApiData()
+  console.log("Hello World! resJson:", resJson)
   return {
     props: {
       resJson:resJson
     }
   }
 }
+
+// {
+//             resJson.data ? resJson.data.map((address: dataItem)=> {
+//               return(
+//                 <div key={address.id}>
+//                   <div>{address.street}</div>
+//                   <div>{address.city}</div>
+//                   <div>{address.zipcode}</div>
+//                 </div>
+//               );
+//             }) : <div>NO DATA FOUND</div>
+//           }
